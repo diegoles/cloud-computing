@@ -1,7 +1,6 @@
 <script>
 	import { appStore } from '../store.js';
 	export let t = {};
-	export let lang = 'en';
 
 	let title = '';
 	let subject = '';

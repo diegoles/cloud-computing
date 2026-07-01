@@ -19,7 +19,7 @@
 </svelte:head>
 
 {#if user?.role === 'admin'}
-	<Admin {user} {lang} />
+	<Admin {lang} />
 {:else}
 	<div class="card" style="text-align: center; max-width: 520px; margin: 4rem auto;">
 		<h2>Access Denied</h2>

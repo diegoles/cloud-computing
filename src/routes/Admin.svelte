@@ -3,7 +3,6 @@
 	import { translations } from '$lib/translations.js';
 	import MaterialUploader from '../lib/MaterialUploader.svelte';
 
-	export let user = null;
 	export let lang = 'en';
 	$: t = translations[lang] || translations['en'];
 

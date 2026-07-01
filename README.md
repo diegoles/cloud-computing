@@ -16,6 +16,7 @@ A functional Svelte prototype for a private school educational platform. It demo
 Open a terminal in the project folder and run:
 
 ```bash
+rm -rf node_modules package-lock.json
 npm install
 npm run dev
 ```
