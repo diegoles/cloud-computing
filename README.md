@@ -35,6 +35,8 @@ The preview URL is usually `http://localhost:4173`.
 
 ## Deploy to Vercel
 
+This project uses `@sveltejs/adapter-static` to generate a static site, so it works on any Vercel Node version without runtime errors.
+
 Make sure you have the [Vercel CLI](https://vercel.com/docs/cli) installed and logged in:
 
 ```bash
