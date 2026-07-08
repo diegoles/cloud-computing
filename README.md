@@ -4,11 +4,14 @@ A functional Svelte prototype for a private school educational platform. It demo
 
 ## Project structure
 
-- `src/store.js` — Fake in-memory database (users, materials, tests, current user).
+- `src/store.js` — Fake in-memory database (users, materials, tests, quiz results, current user).
 - `src/routes/Admin.svelte` — Admin panel for managing users and uploading materials.
 - `src/routes/Estudiante.svelte` — Student portal to download materials and take exams.
-- `src/routes/Ranking.svelte` — Live ranking table derived from test results.
+- `src/routes/Ranking.svelte` — Live ranking table derived from cloud computing test results.
 - `src/routes/TestCloud.svelte` — Cloud Computing Environment & Security Challenges test.
+- `src/lib/quizData.js` — Two bilingual 10-question quizzes on Teaching Grammar and Vocabulary.
+- `src/lib/QuizPlayer.svelte` — Reusable quiz player with score and explanation.
+- `src/routes/tests/` — Independent Grammar & Vocabulary tests section.
 - `src/lib/translations.js` — English / Spanish translations.
 
 ## Local development
@@ -44,6 +47,8 @@ Make sure you have the [Vercel CLI](https://vercel.com/docs/cli) installed and l
 npm i -g vercel
 vercel login
 ```
+
+The Grammar & Vocabulary PDF is served from `static/resources/test/Teaching_Grammar_and_Vocabulary.pdf` and linked in the materials store.
 
 From the project folder run:
 
