@@ -1,6 +1,6 @@
 <script>
 	import { translations, defaultLang } from '$lib/translations.js';
-	import { appStore } from '../store.js';
+	import { appStore } from '../../store.js';
 
 	let t = translations[defaultLang];
 	appStore.subscribe((s) => {

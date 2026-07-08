@@ -1,6 +1,6 @@
 <script>
-	import Admin from '../Admin.svelte';
-	import { appStore } from '../../store.js';
+	import Admin from '../../Admin.svelte';
+	import { appStore } from '../../../store.js';
 	import { translations } from '$lib/translations.js';
 
 	let user = $appStore.currentUser;

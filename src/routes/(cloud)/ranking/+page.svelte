@@ -1,6 +1,6 @@
 <script>
-	import Estudiante from '../Estudiante.svelte';
-	import { appStore } from '../../store.js';
+	import Ranking from '../../Ranking.svelte';
+	import { appStore } from '../../../store.js';
 	import { translations } from '$lib/translations.js';
 
 	let user = $appStore.currentUser;
@@ -15,7 +15,7 @@
 </script>
 
 <svelte:head>
-	<title>{t.student} | {t.appName}</title>
+	<title>{t.ranking} | {t.appName}</title>
 </svelte:head>
 
-<Estudiante {user} {lang} />
+<Ranking {lang} />

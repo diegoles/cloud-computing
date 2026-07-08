@@ -4,15 +4,22 @@ A functional Svelte prototype for a private school educational platform. It demo
 
 ## Project structure
 
-- `src/store.js` — Fake in-memory database (users, materials, tests, quiz results, current user).
+### Cloud Computing module
+- `src/store.js` — Fake in-memory database (users, materials, tests, current user).
+- `src/routes/(cloud)/+layout.svelte` — Cloud navigation and layout.
 - `src/routes/Admin.svelte` — Admin panel for managing users and uploading materials.
 - `src/routes/Estudiante.svelte` — Student portal to download materials and take exams.
-- `src/routes/Ranking.svelte` — Live ranking table derived from cloud computing test results.
+- `src/routes/Ranking.svelte` — Live ranking table derived from cloud test results.
 - `src/routes/TestCloud.svelte` — Cloud Computing Environment & Security Challenges test.
-- `src/lib/quizData.js` — Two bilingual 10-question quizzes on Teaching Grammar and Vocabulary.
-- `src/lib/QuizPlayer.svelte` — Reusable quiz player with score and explanation.
-- `src/routes/tests/` — Independent Grammar & Vocabulary tests section.
-- `src/lib/translations.js` — English / Spanish translations.
+- `src/lib/translations.js` — English / Spanish translations for the cloud module.
+
+### Independent Teaching Grammar & Vocabulary module
+- `src/routes/(teaching-vocabulary)/` — Separate route group with its own navigation; no connection to the cloud module.
+- `src/lib/teaching-vocabulary/store.js` — Independent fake database and ranking for the quizzes.
+- `src/lib/teaching-vocabulary/translations.js` — Bilingual translations for the quizzes.
+- `src/lib/teaching-vocabulary/quizData.js` — Two 10-question quizzes on Teaching Grammar and Vocabulary.
+- `src/lib/teaching-vocabulary/QuizPlayer.svelte` — Reusable quiz player with score and explanation.
+- `static/teaching-vocabulary/resources/test/Teaching_Grammar_and_Vocabulary.pdf` — Source PDF.
 
 ## Local development
 
@@ -48,7 +55,7 @@ npm i -g vercel
 vercel login
 ```
 
-The Grammar & Vocabulary PDF is served from `static/resources/test/Teaching_Grammar_and_Vocabulary.pdf` and linked in the materials store.
+The Grammar & Vocabulary PDF is served from `static/teaching-vocabulary/resources/test/Teaching_Grammar_and_Vocabulary.pdf` and linked in the teaching-vocabulary materials store. The independent module lives at `/teaching-vocabulary`.
 
 From the project folder run:
 

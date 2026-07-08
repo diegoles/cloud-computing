@@ -15,8 +15,7 @@ function createStore() {
 	const materials = [
 		{ id: 1, title: 'Cloud Computing Basics', subject: 'Cloud Computing', fileName: 'cloud-basics.pdf', size: '1.2 MB', url: 'data:text/plain;base64,Cloud+Basics+PDF+mock', type: 'pdf' },
 		{ id: 2, title: 'Cloud Security Challenges', subject: 'Security', fileName: 'security-challenges.pdf', size: '2.4 MB', url: 'data:text/plain;base64,Security+Challenges+PDF+mock', type: 'pdf' },
-		{ id: 3, title: 'AWS vs Azure vs GCP', subject: 'Cloud Environments', fileName: 'providers-comparison.pdf', size: '1.8 MB', url: 'data:text/plain;base64,Providers+Comparison+PDF+mock', type: 'pdf' },
-		{ id: 4, title: 'Teaching Grammar and Vocabulary', subject: 'Grammar & Vocabulary', fileName: 'Teaching_Grammar_and_Vocabulary.pdf', size: '560 KB', url: '/resources/test/Teaching_Grammar_and_Vocabulary.pdf', type: 'pdf' }
+		{ id: 3, title: 'AWS vs Azure vs GCP', subject: 'Cloud Environments', fileName: 'providers-comparison.pdf', size: '1.8 MB', url: 'data:text/plain;base64,Providers+Comparison+PDF+mock', type: 'pdf' }
 	];
 
 	const tests = [
@@ -27,18 +26,9 @@ function createStore() {
 		{ id: 5, userId: 2, userName: 'Grace Rivera', score: 92, date: '2026-06-29' }
 	];
 
-	// Grammar & Vocabulary quizzes (independent from cloud computing tests)
-	const quizResults = [
-		{ id: 1, quizId: 'grammar', userId: 3, userName: 'Carlos Mendez', score: 80, date: '2026-06-25' },
-		{ id: 2, quizId: 'grammar', userId: 4, userName: 'Ana Lopez', score: 95, date: '2026-06-26' },
-		{ id: 3, quizId: 'vocabulary', userId: 5, userName: 'Luis Torres', score: 70, date: '2026-06-27' },
-		{ id: 4, quizId: 'vocabulary', userId: 6, userName: 'Mariana Vega', score: 88, date: '2026-06-28' },
-		{ id: 5, quizId: 'vocabulary', userId: 2, userName: 'Grace Rivera', score: 92, date: '2026-06-29' }
-	];
-
 	const currentUser = { ...users[0] }; // Default student
 
-	const { subscribe, set, update } = writable({ users, materials, tests, quizResults, currentUser });
+	const { subscribe, set, update } = writable({ users, materials, tests, currentUser });
 
 	return {
 		subscribe,
@@ -46,8 +36,7 @@ function createStore() {
 		addUser: (user) => update((s) => ({ ...s, users: [...s.users, { ...user, id: Date.now() }] })),
 		removeUser: (id) => update((s) => ({ ...s, users: s.users.filter((u) => u.id !== id) })),
 		addMaterial: (material) => update((s) => ({ ...s, materials: [...s.materials, { ...material, id: Date.now() }] })),
-		addTestResult: (test) => update((s) => ({ ...s, tests: [...s.tests, { ...test, id: Date.now() }] })),
-		addQuizResult: (result) => update((s) => ({ ...s, quizResults: [...s.quizResults, { ...result, id: Date.now() }] }))
+		addTestResult: (test) => update((s) => ({ ...s, tests: [...s.tests, { ...test, id: Date.now() }] }))
 	};
 }
 
@@ -58,11 +47,4 @@ export const rankings = derived(appStore, ($store) => {
 	return [...$store.tests]
 		.sort((a, b) => b.score - a.score)
 		.map((t, index) => ({ ...t, position: index + 1 }));
-});
-
-// Derived ranking for Grammar & Vocabulary quizzes
-export const quizRankings = derived(appStore, ($store) => {
-	return [...$store.quizResults]
-		.sort((a, b) => b.score - a.score)
-		.map((r, index) => ({ ...r, position: index + 1 }));
 });

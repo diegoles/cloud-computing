@@ -1,7 +1,7 @@
 <script>
 	import { createEventDispatcher } from 'svelte';
 	import { fade } from 'svelte/transition';
-	import { appStore } from '../store.js';
+	import { teachingStore } from './store.js';
 	import { translations } from './translations.js';
 
 	export let quiz = { questions: [] };
@@ -37,7 +37,7 @@
 			}
 		});
 		score = Math.round((correct / total) * 100);
-		appStore.addQuizResult({
+		teachingStore.addResult({
 			quizId: quiz.id,
 			userId: user?.id || 0,
 			userName: user?.name || 'Guest',
@@ -92,7 +92,7 @@
 						</button>
 						{#if showExplanation === answers[q.id]}
 							<div class="explanation">
-								<p>{q.options[answers[q.id]].correct ? (q.explanation[lang] || q.explanation.en) : (lang === 'es' ? 'No es la respuesta correcta. Elige la mejor opción y lee la explicación.' : 'This is not the correct answer. Choose the best option and read the explanation.')}</p>
+								<p>{q.options[answers[q.id]].correct ? (q.explanation[lang] || q.explanation.en) : t.incorrectChoice}</p>
 							</div>
 						{/if}
 					{/if}
@@ -101,9 +101,9 @@
 		{/each}
 
 		<div style="display: flex; justify-content: space-between; margin-top: 1.5rem;">
-			<button class="secondary" disabled={activeIndex === 0} on:click={() => activeIndex--}>Previous</button>
+			<button class="secondary" disabled={activeIndex === 0} on:click={() => activeIndex--}>{t.previous}</button>
 			{#if activeIndex < total - 1}
-				<button class="secondary" on:click={() => activeIndex++}>Next</button>
+				<button class="secondary" on:click={() => activeIndex++}>{t.next}</button>
 			{:else}
 				<button on:click={submitQuiz}>{t.submit}</button>
 			{/if}
@@ -114,19 +114,19 @@
 			<div class="score-circle" style="margin: 1.5rem auto;">{score}%</div>
 			<p style="color: var(--muted); margin-bottom: 1.5rem;">
 				{#if score >= 90}
-					{lang === 'es' ? 'Excelente dominio de la enseñanza del léxico o la gramática.' : 'Excellent grasp of grammar or vocabulary teaching principles.'}
+					{t.xcellent}
 				{:else if score >= 70}
-					{lang === 'es' ? 'Buen trabajo; repasa los conceptos clave.' : 'Good work; keep reviewing the key concepts.'}
+					{t.good}
 				{:else}
-					{lang === 'es' ? 'Sigue estudiando los principios pedagógicos e intenta de nuevo.' : 'Keep studying the teaching principles and try again.'}
+					{t.keepStudying}
 				{/if}
 			</p>
-			<p>{lang === 'es' ? 'Tu puntaje se añadió al ranking global.' : 'Your score has been added to the global ranking.'}</p>
+			<p>{t.rankingAdded}</p>
 
 			<div style="display: flex; justify-content: center; gap: 0.75rem; margin-top: 1.5rem; flex-wrap: wrap;">
 				<button on:click={reset}>{t.retake}</button>
-				<a href="/tests/ranking" class="btn success">{t.ranking}</a>
-				<button class="secondary" on:click={() => dispatch('finish')}>{lang === 'es' ? 'Volver a los cuestionarios' : 'Back to quizzes'}</button>
+				<a href="/teaching-vocabulary/ranking" class="btn success">{t.ranking}</a>
+				<button class="secondary" on:click={() => dispatch('finish')}>{t.backToDashboard}</button>
 			</div>
 		</div>
 	{/if}
