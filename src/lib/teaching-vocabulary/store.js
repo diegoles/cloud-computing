@@ -3,12 +3,12 @@ import { writable, derived } from 'svelte/store';
 // Independent fake database for the Teaching Grammar & Vocabulary module
 function createTeachingStore() {
 	const users = [
-		{ id: 1, name: 'Edgar Diaz', email: 'edgar.diaz@school.edu', role: 'student', lang: 'en' },
-		{ id: 2, name: 'Grace Rivera', email: 'grace.rivera@school.edu', role: 'student', lang: 'en' },
-		{ id: 3, name: 'Carlos Mendez', email: 'carlos.m@school.edu', role: 'student', lang: 'en' },
-		{ id: 4, name: 'Ana Lopez', email: 'ana.lopez@school.edu', role: 'student', lang: 'en' },
-		{ id: 5, name: 'Luis Torres', email: 'luis.t@school.edu', role: 'student', lang: 'en' },
-		{ id: 6, name: 'Mariana Vega', email: 'mariana.v@school.edu', role: 'student', lang: 'en' }
+		{ id: 1, name: 'Edgar Diaz', email: 'eediaz12@espe.edu.ec', role: 'student', lang: 'en' },
+		{ id: 2, name: 'Grace Rivera', email: 'grace.rivera@espe.edu.ec', role: 'student', lang: 'en' },
+		{ id: 3, name: 'Carlos Mendez', email: 'carlos.m@espe.edu.ec', role: 'student', lang: 'en' },
+		{ id: 4, name: 'Ana Lopez', email: 'ana.lopez@espe.edu.ec', role: 'student', lang: 'en' },
+		{ id: 5, name: 'Luis Torres', email: 'luis.t@espe.edu.ec', role: 'student', lang: 'en' },
+		{ id: 6, name: 'Mariana Vega', email: 'mariana.v@espe.edu.ec', role: 'student', lang: 'en' }
 	];
 
 	const materials = [

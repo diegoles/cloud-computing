@@ -36,7 +36,6 @@
 <footer class="footer">
 	<div class="container" style="text-align: center;">
 		<p style="color: var(--muted); font-size: 0.875rem;">{t.madeBy}</p>
-		<p><a href="/" style="color: var(--muted);">← {t.backToCloud}</a></p>
 	</div>
 </footer>
 
