@@ -25,20 +25,24 @@
 
 <div class="grid-2">
 	<div class="card">
-		<h2>{t.grading}</h2>
-		<p style="color: var(--muted);">{t.featureGrading}</p>
-	</div>
-	<div class="card">
 		<h2>{t.exams}</h2>
 		<p style="color: var(--muted);">{t.featureExams}</p>
+		<a href="/exams" class="btn" style="margin-top: 1rem;">{t.startExam}</a>
 	</div>
 	<div class="card">
-		<h2>{t.adminTasks}</h2>
-		<p style="color: var(--muted);">{t.featureAdmin}</p>
+		<h2>{t.grading}</h2>
+		<p style="color: var(--muted);">{t.featureGrading}</p>
+		<a href="/grading" class="btn" style="margin-top: 1rem;">View Grades</a>
 	</div>
 	<div class="card">
 		<h2>{t.communication}</h2>
 		<p style="color: var(--muted);">{t.featureCommunication}</p>
+		<a href="/communication" class="btn" style="margin-top: 1rem;">Open Chat</a>
+	</div>
+	<div class="card">
+		<h2>{t.adminTasks}</h2>
+		<p style="color: var(--muted);">{t.featureAdmin}</p>
+		<a href="/admin-tasks" class="btn" style="margin-top: 1rem;">Manage Tasks</a>
 	</div>
 </div>
 

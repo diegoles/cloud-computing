@@ -34,6 +34,10 @@
 			{#if isStudent}
 				<a href="/estudiante" class:active={$page.url.pathname === '/estudiante'}>{t.student}</a>
 			{/if}
+			<a href="/exams" class:active={$page.url.pathname === '/exams'}>{t.exams}</a>
+			<a href="/grading" class:active={$page.url.pathname === '/grading'}>{t.grading}</a>
+			<a href="/communication" class:active={$page.url.pathname === '/communication'}>{t.communication}</a>
+			<a href="/admin-tasks" class:active={$page.url.pathname === '/admin-tasks'}>{t.adminTasks}</a>
 			<a href="/ranking" class:active={$page.url.pathname === '/ranking'}>{t.ranking}</a>
 			<div class="lang-switch">
 				<button class="secondary" on:click={() => setLanguage('en')}>EN</button>

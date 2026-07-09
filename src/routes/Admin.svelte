@@ -9,6 +9,14 @@
 	let newName = '';
 	let newEmail = '';
 	let newRole = 'student';
+	let activeTab = 'users';
+
+	let newExamTitle = '';
+	let newExamSubject = '';
+	let newQuestionText = '';
+	let newQuestionOptions = ['', '', '', ''];
+	let newQuestionCorrect = 0;
+	let examQuestions = [];
 
 	function addUser() {
 		if (!newName.trim() || !newEmail.trim()) return;
@@ -21,29 +29,73 @@
 	function removeUser(id) {
 		appStore.removeUser(id);
 	}
+
+	function addQuestion() {
+		if (!newQuestionText.trim() || newQuestionOptions.some((o) => !o.trim())) return;
+		examQuestions = [...examQuestions, {
+			id: examQuestions.length + 1,
+			question: newQuestionText.trim(),
+			options: newQuestionOptions.map((o) => o.trim()),
+			correct: parseInt(newQuestionCorrect)
+		}];
+		newQuestionText = '';
+		newQuestionOptions = ['', '', '', ''];
+		newQuestionCorrect = 0;
+	}
+
+	function saveExam() {
+		if (!newExamTitle.trim() || !newExamSubject.trim() || examQuestions.length === 0) return;
+		appStore.addExam({
+			title: newExamTitle.trim(),
+			subject: newExamSubject.trim(),
+			questions: examQuestions
+		});
+		newExamTitle = '';
+		newExamSubject = '';
+		examQuestions = [];
+	}
+
+	function removeExam(id) {
+		appStore.removeExam(id);
+	}
+
+	function updateGradeStatus(grade, status) {
+		appStore.updateGrade(grade.id, { status });
+	}
 </script>
 
 <h1>{t.admin}</h1>
 
-<div class="grid-2">
+<div class="card" style="margin-bottom: 1.5rem;">
+	<div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+		<button class:secondary={activeTab !== 'users'} on:click={() => (activeTab = 'users')}>Users</button>
+		<button class:secondary={activeTab !== 'exams'} on:click={() => (activeTab = 'exams')}>Exams</button>
+		<button class:secondary={activeTab !== 'grades'} on:click={() => (activeTab = 'grades')}>Grades</button>
+		<button class:secondary={activeTab !== 'materials'} on:click={() => (activeTab = 'materials')}>Materials</button>
+	</div>
+</div>
+
+{#if activeTab === 'users'}
 	<div class="card">
 		<h2>{t.students}</h2>
-		<div class="form-row">
-			<label for="adminName">{t.name}</label>
-			<input id="adminName" bind:value={newName} placeholder={t.name} />
+		<div class="grid-2" style="margin-bottom: 1rem;">
+			<div class="form-row">
+				<label for="adminName">{t.name}</label>
+				<input id="adminName" bind:value={newName} placeholder={t.name} />
+			</div>
+			<div class="form-row">
+				<label for="adminEmail">{t.email}</label>
+				<input id="adminEmail" type="email" bind:value={newEmail} placeholder={t.email} />
+			</div>
 		</div>
-		<div class="form-row">
-			<label for="adminEmail">{t.email}</label>
-			<input id="adminEmail" type="email" bind:value={newEmail} placeholder={t.email} />
-		</div>
-		<div class="form-row">
+		<div class="form-row" style="max-width: 200px;">
 			<label for="adminRole">{t.role}</label>
 			<select id="adminRole" bind:value={newRole}>
 				<option value="student">{t.roleStudent}</option>
 				<option value="admin">{t.roleAdmin}</option>
 			</select>
 		</div>
-		<button on:click={addUser}>{t.addStudent}</button>
+		<button on:click={addUser} style="margin-top: 1rem;">{t.addStudent}</button>
 
 		<table style="margin-top: 1.5rem;">
 			<thead>
@@ -70,20 +122,115 @@
 			</tbody>
 		</table>
 	</div>
+{:else if activeTab === 'exams'}
+	<div class="card">
+		<h2>Manage Exams</h2>
+		<div class="grid-2" style="margin-bottom: 1rem;">
+			<div class="form-row">
+				<label for="examTitle">Exam Title</label>
+				<input id="examTitle" bind:value={newExamTitle} placeholder="e.g. Cloud Computing Fundamentals" />
+			</div>
+			<div class="form-row">
+				<label for="examSubject">Subject</label>
+				<input id="examSubject" bind:value={newExamSubject} placeholder="e.g. Cloud Computing" />
+			</div>
+		</div>
 
+		<h3 style="margin-top: 1.5rem;">Add Question</h3>
+		<div class="form-row">
+			<label for="questionText">Question</label>
+			<input id="questionText" bind:value={newQuestionText} placeholder="Enter question" />
+		</div>
+		<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+			{#each newQuestionOptions as option, index}
+				<div class="form-row">
+					<label for="option{index}">Option {index + 1}</label>
+					<input id="option{index}" bind:value={newQuestionOptions[index]} placeholder="Option {index + 1}" />
+				</div>
+			{/each}
+		</div>
+		<div class="form-row" style="max-width: 200px;">
+			<label for="correctOption">Correct Option</label>
+			<select id="correctOption" bind:value={newQuestionCorrect}>
+				{#each newQuestionOptions as _, index}
+					<option value={index}>Option {index + 1}</option>
+				{/each}
+			</select>
+		</div>
+		<button on:click={addQuestion} style="margin-top: 1rem; margin-right: 0.5rem;">Add Question</button>
+		<button on:click={saveExam} class="success" disabled={!newExamTitle.trim() || !newExamSubject.trim() || examQuestions.length === 0} style="margin-top: 1rem;">Save Exam</button>
+
+		{#if examQuestions.length > 0}
+			<div class="card" style="margin-top: 1.5rem; background: var(--surface);">
+				<h3>Exam Preview ({examQuestions.length} questions)</h3>
+				{#each examQuestions as q, index}
+					<p style="margin-bottom: 0.5rem;"><strong>{index + 1}.</strong> {q.question}</p>
+				{/each}
+			</div>
+		{/if}
+
+		<h3 style="margin-top: 2rem;">Existing Exams</h3>
+		<table>
+			<thead>
+				<tr>
+					<th>Title</th>
+					<th>Subject</th>
+					<th>Questions</th>
+					<th>{t.actions}</th>
+				</tr>
+			</thead>
+			<tbody>
+				{#each $appStore.exams as exam}
+					<tr>
+						<td>{exam.title}</td>
+						<td>{exam.subject}</td>
+						<td>{exam.questions.length}</td>
+						<td>
+							<button class="danger" style="padding: 0.35rem 0.6rem; font-size: 0.8rem;" on:click={() => removeExam(exam.id)}>{t.delete}</button>
+						</td>
+					</tr>
+				{/each}
+			</tbody>
+		</table>
+	</div>
+{:else if activeTab === 'grades'}
+	<div class="card">
+		<h2>Grades & Assessments</h2>
+		<table>
+			<thead>
+				<tr>
+					<th>{t.studentName}</th>
+					<th>Exam</th>
+					<th>{t.score}</th>
+					<th>Status</th>
+					<th>Feedback</th>
+					<th>{t.date}</th>
+					<th>{t.actions}</th>
+				</tr>
+			</thead>
+			<tbody>
+				{#each $appStore.grades as grade}
+					<tr>
+						<td>{grade.userName}</td>
+						<td>{grade.examTitle}</td>
+						<td>{grade.score}%</td>
+						<td>
+							<span class="badge" class:success={grade.status === 'passed'} class:danger={grade.status === 'failed'}>{grade.status}</span>
+						</td>
+						<td>{grade.feedback}</td>
+						<td>{grade.date}</td>
+						<td>
+							<button class="success" style="padding: 0.35rem 0.6rem; font-size: 0.8rem;" on:click={() => updateGradeStatus(grade, 'passed')}>Pass</button>
+							<button class="danger" style="padding: 0.35rem 0.6rem; font-size: 0.8rem;" on:click={() => updateGradeStatus(grade, 'failed')}>Fail</button>
+						</td>
+					</tr>
+				{/each}
+			</tbody>
+		</table>
+	</div>
+{:else if activeTab === 'materials'}
 	<div class="card">
 		<h2>{t.materials}</h2>
 		<MaterialUploader {t} {lang} />
 	</div>
-</div>
-
-<div class="card" style="margin-top: 1rem;">
-	<h2>{t.adminTasks}</h2>
-	<p style="color: var(--muted);">{t.featureAdmin}</p>
-	<ul>
-		<li>Manage users and roles</li>
-		<li>Upload study materials</li>
-		<li>Monitor exam results and rankings</li>
-		<li>Communicate with teachers and staff</li>
-	</ul>
-</div>
+{/if}
