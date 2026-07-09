@@ -57,21 +57,28 @@
 
 <div class="card" style="display: grid; grid-template-columns: 280px 1fr; min-height: 500px; padding: 0; overflow: hidden;">
 	<!-- Sidebar: Contacts -->
-	<div style="border-right: 1px solid var(--border); background: var(--surface); display: flex; flex-direction: column;">
-		<div style="padding: 1rem; border-bottom: 1px solid var(--border);">
-			<h2 style="font-size: 1rem; margin: 0;">Contacts</h2>
+	<div class="contacts-sidebar">
+		<div class="contacts-header">
+			<h2>{t.contacts}</h2>
+			<span class="contacts-count">{contacts.length} {contacts.length === 1 ? 'person' : 'people'}</span>
 		</div>
-		<div style="overflow-y: auto;">
+		<div class="contacts-list">
 			{#each contacts as contact}
 				<button
 					class="contact-item"
 					class:active={selectedContactId === contact.id}
 					on:click={() => selectContact(contact.id)}
-					style="width: 100%; text-align: left; padding: 0.75rem 1rem; border: none; background: transparent; border-bottom: 1px solid var(--border); cursor: pointer; display: flex; justify-content: space-between; align-items: center;"
 				>
-					<span>{contact.name} <small style="color: var(--muted);">({contact.role})</small></span>
+					<div class="contact-avatar">
+						{contact.name.split(' ').map((n) => n[0]).join('').toUpperCase()}
+					</div>
+					<div class="contact-info">
+						<span class="contact-name">{contact.name}</span>
+						<span class="contact-role" class:admin={contact.role === 'admin'}>{contact.role}</span>
+						<span class="contact-email">{contact.email}</span>
+					</div>
 					{#if getUnreadCount(contact.id) > 0}
-						<span class="badge danger" style="min-width: 1.5rem; text-align: center;">{getUnreadCount(contact.id)}</span>
+						<span class="badge danger unread-badge">{getUnreadCount(contact.id)}</span>
 					{/if}
 				</button>
 			{/each}
@@ -116,8 +123,120 @@
 </div>
 
 <style>
-	.contact-item:hover,
+	.contacts-sidebar {
+		border-right: 1px solid var(--border);
+		background: var(--surface);
+		display: flex;
+		flex-direction: column;
+		min-width: 0;
+	}
+	.contacts-header {
+		padding: 1.25rem;
+		border-bottom: 1px solid var(--border);
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		background: var(--bg);
+	}
+	.contacts-header h2 {
+		font-size: 1.1rem;
+		margin: 0;
+		color: var(--text);
+	}
+	.contacts-count {
+		font-size: 0.75rem;
+		color: var(--muted);
+		background: var(--border);
+		padding: 0.25rem 0.6rem;
+		border-radius: 1rem;
+	}
+	.contacts-list {
+		overflow-y: auto;
+		flex: 1;
+		padding: 0.5rem;
+	}
+	.contact-item {
+		width: 100%;
+		text-align: left;
+		padding: 0.875rem;
+		border: none;
+		background: transparent;
+		border-radius: 0.75rem;
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		gap: 0.875rem;
+		margin-bottom: 0.35rem;
+		transition: background 0.15s ease;
+	}
+	.contact-item:hover {
+		background: var(--border);
+	}
 	.contact-item.active {
-		background: var(--border) !important;
+		background: var(--primary);
+		color: white;
+	}
+	.contact-item.active .contact-role,
+	.contact-item.active .contact-email,
+	.contact-item.active .contact-name {
+		color: white;
+	}
+	.contact-avatar {
+		width: 2.75rem;
+		height: 2.75rem;
+		border-radius: 50%;
+		background: linear-gradient(135deg, var(--primary), #6366f1);
+		color: white;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-weight: 700;
+		font-size: 0.95rem;
+		flex-shrink: 0;
+	}
+	.contact-info {
+		display: flex;
+		flex-direction: column;
+		flex: 1;
+		min-width: 0;
+	}
+	.contact-name {
+		font-weight: 600;
+		font-size: 0.95rem;
+		color: var(--text);
+	}
+	.contact-role {
+		font-size: 0.75rem;
+		color: var(--muted);
+		text-transform: capitalize;
+	}
+	.contact-role.admin {
+		color: var(--primary);
+		font-weight: 600;
+	}
+	.contact-email {
+		font-size: 0.7rem;
+		color: var(--muted);
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+	.unread-badge {
+		min-width: 1.5rem;
+		text-align: center;
+		border-radius: 50%;
+		padding: 0.15rem 0.4rem;
+		font-size: 0.75rem;
+	}
+
+	@media (max-width: 640px) {
+		.card {
+			grid-template-columns: 1fr !important;
+		}
+		.contacts-sidebar {
+			border-right: none;
+			border-bottom: 1px solid var(--border);
+			max-height: 240px;
+		}
 	}
 </style>

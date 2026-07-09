@@ -28,6 +28,7 @@
 		<a href="/" class="brand">{t.appName}</a>
 		<div class="nav-links">
 			<a href="/" class:active={$page.url.pathname === '/'}>{t.home}</a>
+			<a href="/dashboard" class:active={$page.url.pathname === '/dashboard'}>Dashboard</a>
 			{#if isAdmin}
 				<a href="/admin" class:active={$page.url.pathname === '/admin'}>{t.admin}</a>
 			{/if}

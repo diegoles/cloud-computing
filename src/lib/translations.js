@@ -94,7 +94,12 @@ export const translations = {
 		feedback: 'Feedback',
 		filter: 'Filter',
 		accessDenied: 'Access Denied',
-		adminOnly: 'This area is reserved for administrators. Please log in as an admin.'
+		adminOnly: 'This area is reserved for administrators. Please log in as an admin.',
+		distribution: 'Distribution',
+		recentGrades: 'Recent Grades',
+		welcomeBack: 'Welcome Back',
+		manageExams: 'Manage Exams',
+		createTask: 'Create Task'
 	},
 	es: {
 		appName: 'Portal Educativo de Cloud Computing',
@@ -191,7 +196,12 @@ export const translations = {
 		feedback: 'Retroalimentación',
 		filter: 'Filtrar',
 		accessDenied: 'Acceso Denegado',
-		adminOnly: 'Esta área está reservada para administradores. Inicia sesión como administrador.'
+		adminOnly: 'Esta área está reservada para administradores. Inicia sesión como administrador.',
+		distribution: 'Distribución',
+		recentGrades: 'Calificaciones Recientes',
+		welcomeBack: 'Bienvenido de Nuevo',
+		manageExams: 'Gestionar Exámenes',
+		createTask: 'Crear Tarea'
 	}
 };
 

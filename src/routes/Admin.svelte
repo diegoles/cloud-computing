@@ -68,10 +68,10 @@
 
 <div class="card" style="margin-bottom: 1.5rem;">
 	<div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-		<button class:secondary={activeTab !== 'users'} on:click={() => (activeTab = 'users')}>Users</button>
-		<button class:secondary={activeTab !== 'exams'} on:click={() => (activeTab = 'exams')}>Exams</button>
-		<button class:secondary={activeTab !== 'grades'} on:click={() => (activeTab = 'grades')}>Grades</button>
-		<button class:secondary={activeTab !== 'materials'} on:click={() => (activeTab = 'materials')}>Materials</button>
+		<button class:secondary={activeTab !== 'users'} on:click={() => (activeTab = 'users')}>{t.students}</button>
+		<button class:secondary={activeTab !== 'exams'} on:click={() => (activeTab = 'exams')}>{t.exams}</button>
+		<button class:secondary={activeTab !== 'grades'} on:click={() => (activeTab = 'grades')}>{t.grading}</button>
+		<button class:secondary={activeTab !== 'materials'} on:click={() => (activeTab = 'materials')}>{t.materials}</button>
 	</div>
 </div>
 
@@ -124,22 +124,22 @@
 	</div>
 {:else if activeTab === 'exams'}
 	<div class="card">
-		<h2>Manage Exams</h2>
+		<h2>{t.manageExams}</h2>
 		<div class="grid-2" style="margin-bottom: 1rem;">
 			<div class="form-row">
-				<label for="examTitle">Exam Title</label>
-				<input id="examTitle" bind:value={newExamTitle} placeholder="e.g. Cloud Computing Fundamentals" />
+				<label for="examTitle">{t.examTitle}</label>
+				<input id="examTitle" bind:value={newExamTitle} placeholder={t.examTitle} />
 			</div>
 			<div class="form-row">
-				<label for="examSubject">Subject</label>
-				<input id="examSubject" bind:value={newExamSubject} placeholder="e.g. Cloud Computing" />
+				<label for="examSubject">{t.examSubject}</label>
+				<input id="examSubject" bind:value={newExamSubject} placeholder={t.examSubject} />
 			</div>
 		</div>
 
-		<h3 style="margin-top: 1.5rem;">Add Question</h3>
+		<h3 style="margin-top: 1.5rem;">{t.addQuestion}</h3>
 		<div class="form-row">
-			<label for="questionText">Question</label>
-			<input id="questionText" bind:value={newQuestionText} placeholder="Enter question" />
+			<label for="questionText">{t.questionText}</label>
+			<input id="questionText" bind:value={newQuestionText} placeholder={t.questionText} />
 		</div>
 		<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
 			{#each newQuestionOptions as option, index}
@@ -150,32 +150,32 @@
 			{/each}
 		</div>
 		<div class="form-row" style="max-width: 200px;">
-			<label for="correctOption">Correct Option</label>
+			<label for="correctOption">{t.correctOption}</label>
 			<select id="correctOption" bind:value={newQuestionCorrect}>
 				{#each newQuestionOptions as _, index}
 					<option value={index}>Option {index + 1}</option>
 				{/each}
 			</select>
 		</div>
-		<button on:click={addQuestion} style="margin-top: 1rem; margin-right: 0.5rem;">Add Question</button>
-		<button on:click={saveExam} class="success" disabled={!newExamTitle.trim() || !newExamSubject.trim() || examQuestions.length === 0} style="margin-top: 1rem;">Save Exam</button>
+		<button on:click={addQuestion} style="margin-top: 1rem; margin-right: 0.5rem;">{t.addQuestion}</button>
+		<button on:click={saveExam} class="success" disabled={!newExamTitle.trim() || !newExamSubject.trim() || examQuestions.length === 0} style="margin-top: 1rem;">{t.submit}</button>
 
 		{#if examQuestions.length > 0}
 			<div class="card" style="margin-top: 1.5rem; background: var(--surface);">
-				<h3>Exam Preview ({examQuestions.length} questions)</h3>
+				<h3>{t.examPreview} ({examQuestions.length} {t.question}s)</h3>
 				{#each examQuestions as q, index}
 					<p style="margin-bottom: 0.5rem;"><strong>{index + 1}.</strong> {q.question}</p>
 				{/each}
 			</div>
 		{/if}
 
-		<h3 style="margin-top: 2rem;">Existing Exams</h3>
+		<h3 style="margin-top: 2rem;">{t.existingExams}</h3>
 		<table>
 			<thead>
 				<tr>
-					<th>Title</th>
-					<th>Subject</th>
-					<th>Questions</th>
+					<th>{t.examTitle}</th>
+					<th>{t.examSubject}</th>
+					<th>{t.question}s</th>
 					<th>{t.actions}</th>
 				</tr>
 			</thead>
@@ -195,15 +195,15 @@
 	</div>
 {:else if activeTab === 'grades'}
 	<div class="card">
-		<h2>Grades & Assessments</h2>
+		<h2>{t.grading}</h2>
 		<table>
 			<thead>
 				<tr>
 					<th>{t.studentName}</th>
-					<th>Exam</th>
+					<th>{t.exams}</th>
 					<th>{t.score}</th>
-					<th>Status</th>
-					<th>Feedback</th>
+					<th>{t.status}</th>
+					<th>{t.feedback}</th>
 					<th>{t.date}</th>
 					<th>{t.actions}</th>
 				</tr>
@@ -215,13 +215,13 @@
 						<td>{grade.examTitle}</td>
 						<td>{grade.score}%</td>
 						<td>
-							<span class="badge" class:success={grade.status === 'passed'} class:danger={grade.status === 'failed'}>{grade.status}</span>
+							<span class="badge" class:success={grade.status === 'passed'} class:danger={grade.status === 'failed'}>{grade.status === 'passed' ? t.passed : t.failed}</span>
 						</td>
 						<td>{grade.feedback}</td>
 						<td>{grade.date}</td>
 						<td>
-							<button class="success" style="padding: 0.35rem 0.6rem; font-size: 0.8rem;" on:click={() => updateGradeStatus(grade, 'passed')}>Pass</button>
-							<button class="danger" style="padding: 0.35rem 0.6rem; font-size: 0.8rem;" on:click={() => updateGradeStatus(grade, 'failed')}>Fail</button>
+							<button class="success" style="padding: 0.35rem 0.6rem; font-size: 0.8rem;" on:click={() => updateGradeStatus(grade, 'passed')}>{t.passed}</button>
+							<button class="danger" style="padding: 0.35rem 0.6rem; font-size: 0.8rem;" on:click={() => updateGradeStatus(grade, 'failed')}>{t.failed}</button>
 						</td>
 					</tr>
 				{/each}
