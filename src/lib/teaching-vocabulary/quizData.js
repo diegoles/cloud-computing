@@ -1,163 +1,5 @@
-// Bilingual quiz data for Teaching Grammar and Vocabulary
+// Bilingual quiz data for Teaching Vocabulary
 // Based on standard ELT/TESOL pedagogy aligned with the uploaded PDF theme.
-
-export const grammarQuiz = {
-	id: 'grammar',
-	en: { title: 'Teaching Grammar', description: 'Test your understanding of grammar teaching approaches, lesson frameworks and correction techniques.' },
-	es: { title: 'Enseñanza de la Gramática', description: 'Evalúa tu comprensión de enfoques de enseñanza de gramática, marcos de lección y técnicas de corrección.' },
-	questions: [
-		{
-			id: 1,
-			en: 'What does the PPP framework stand for in a grammar lesson?',
-			es: '¿Qué significa el marco PPP en una lección de gramática?',
-			options: [
-				{ en: 'Plan, Prepare, Produce', es: 'Planificar, Preparar, Producir', correct: false },
-				{ en: 'Presentation, Practice, Production', es: 'Presentación, Práctica, Producción', correct: true },
-				{ en: 'Practice, Pronunciation, Presentation', es: 'Práctica, Pronunciación, Presentación', correct: false },
-				{ en: 'Prepare, Practice, Perform', es: 'Preparar, Practicar, Actuar', correct: false }
-			],
-			explanation: {
-				en: 'PPP is a classic lesson shape: the teacher first presents the form/structure, students then practise it in controlled exercises, and finally use it in a freer, communicative activity.',
-				es: 'PPP es un marco clásico: el docente presenta la estructura, los estudiantes la practican con ejercicios controlados y, finalmente, la usan en una actividad comunicativa más libre.'
-			}
-		},
-		{
-			id: 2,
-			en: 'In a deductive grammar lesson, what happens first?',
-			es: 'En una lección de gramática deductiva, ¿qué ocurre primero?',
-			options: [
-				{ en: 'Students discover the rule from examples', es: 'Los estudiantes descubren la regla a partir de ejemplos', correct: false },
-				{ en: 'The teacher gives the rule and then provides examples', es: 'El profesor da la regla y luego provee ejemplos', correct: true },
-				{ en: 'Students practise without any explanation', es: 'Los estudiantes practican sin ninguna explicación', correct: false },
-				{ en: 'The teacher elicits meaning from context only', es: 'El profesor extrae el significado solo del contexto', correct: false }
-			],
-			explanation: {
-				en: 'Deductive teaching starts with the rule and then checks understanding through examples. Inductive teaching does the reverse.',
-				es: 'La enseñanza deductiva comienza con la regla y luego verifica la comprensión mediante ejemplos. La enseñanza inductiva hace lo contrario.'
-			}
-		},
-		{
-			id: 3,
-			en: 'Which approach asks learners to notice patterns in authentic examples and derive the rule themselves?',
-			es: '¿Qué enfoque pide a los estudiantes notar patrones en ejemplos auténticos y derivar la regla por sí mismos?',
-			options: [
-				{ en: 'Deductive approach', es: 'Enfoque deductivo', correct: false },
-				{ en: 'Grammar-translation', es: 'Traducción gramatical', correct: false },
-				{ en: 'Inductive approach', es: 'Enfoque inductivo', correct: true },
-				{ en: 'Drill-based approach', es: 'Enfoque basado en repeticiones', correct: false }
-			],
-			explanation: {
-				en: 'An inductive approach gives examples first and encourages learners to discover the rule, promoting deeper processing and engagement.',
-				es: 'Un enfoque inductivo presenta ejemplos primero y anima a los estudiantes a descubrir la regla, promoviendo un procesamiento más profundo y la participación.'
-			}
-		},
-		{
-			id: 4,
-			en: 'What is the main purpose of "noticing" in grammar teaching?',
-			es: '¿Cuál es el propósito principal del "noticing" en la enseñanza de gramática?',
-			options: [
-				{ en: 'To make learners write more homework', es: 'Hacer que los estudiantes escriban más tareas', correct: false },
-				{ en: 'To draw learners\' attention to the grammatical feature', es: 'Atraer la atención de los estudiantes hacia el rasgo gramatical', correct: true },
-				{ en: 'To test memorisation of rules', es: 'Probar la memorización de reglas', correct: false },
-				{ en: 'To reduce speaking practice', es: 'Reducir la práctica oral', correct: false }
-			],
-			explanation: {
-				en: 'Noticing helps learners become aware of a form in input, which is a first step toward acquisition. Schmidt\'s Noticing Hypothesis supports this.',
-				es: 'El noticing ayuda a los estudiantes a tomar conciencia de una forma en la entrada lingüística, un primer paso hacia la adquisición. La Hipótesis de Noticing de Schmidt respalda esto.'
-			}
-		},
-		{
-			id: 5,
-			en: 'Which of these best describes a "freer practice" grammar activity?',
-			es: '¿Cuál de estas describe mejor una actividad de "práctica libre" de gramática?',
-			options: [
-				{ en: 'A gap-fill with only one correct answer', es: 'Un ejercicio de completar con una única respuesta correcta', correct: false },
-				{ en: 'A personalised speaking task where learners choose what to say', es: 'Una tarea oral personalizada donde los estudiantes eligen qué decir', correct: true },
-				{ en: 'A substitution drill led by the teacher', es: 'Un ejercicio de sustitución dirigido por el profesor', correct: false },
-				{ en: 'A worksheet with sentence transformation', es: 'Una hoja de trabajo con transformación de oraciones', correct: false }
-			],
-			explanation: {
-				en: 'Freer practice lets learners use the target structure in meaningful, personal communication, though accuracy may vary.',
-				es: 'La práctica libre permite a los estudiantes usar la estructura objetivo en una comunicación significativa y personal, aunque la precisión puede variar.'
-			}
-		},
-		{
-			id: 6,
-			en: 'When is delayed error correction usually more effective than immediate correction?',
-			es: '¿Cuándo es la corrección diferida normalmente más efectiva que la corrección inmediata?',
-			options: [
-				{ en: 'During a fluency activity to avoid interrupting communication', es: 'Durante una actividad de fluidez para evitar interrumpir la comunicación', correct: true },
-				{ en: 'When introducing a new rule', es: 'Cuando se introduce una nueva regla', correct: false },
-				{ en: 'In a fill-in-the-blanks exercise', es: 'En un ejercicio de completar espacios', correct: false },
-				{ en: 'When drilling pronunciation individually', es: 'Cuando se practica pronunciación individualmente', correct: false }
-			],
-			explanation: {
-				en: 'Delayed correction protects fluency and avoids knocking confidence during speaking tasks. The teacher can revisit errors after the activity.',
-				es: 'La corrección diferida protege la fluidez y evita minar la confianza durante las tareas orales. El profesor puede revisar los errores después de la actividad.'
-			}
-		},
-		{
-			id: 7,
-			en: 'What does "metalanguage" refer to in the grammar classroom?',
-			es: '¿A qué se refiere el "metalenguaje" en el aula de gramática?',
-			options: [
-				{ en: 'The target language being learnt', es: 'El idioma objetivo que se está aprendiendo', correct: false },
-				{ en: 'The language used to talk about language itself', es: 'El lenguaje usado para hablar del propio lenguaje', correct: true },
-				{ en: 'A translation from the mother tongue', es: 'Una traducción de la lengua materna', correct: false },
-				{ en: 'Listening materials only', es: 'Solo materiales de escucha', correct: false }
-			],
-			explanation: {
-				en: 'Metalanguage includes terms like noun, clause, tense, article and past participle. It is useful but can overwhelm beginners if overused.',
-				es: 'El metalenguaje incluye términos como sustantivo, cláusula, tiempo, artículo y participio pasado. Es útil, pero puede abrumar a principiantes si se usa en exceso.'
-			}
-		},
-		{
-			id: 8,
-			en: 'Which lesson design is most strongly associated with using grammar to complete a meaningful outcome?',
-			es: '¿Qué diseño de lección se asocia más con usar la gramática para completar un resultado significativo?',
-			options: [
-				{ en: 'Task-Based Language Teaching (TBLT)', es: 'Enseñanza de lenguaje basada en tareas (TBLT)', correct: true },
-				{ en: 'Audio-lingual drill book', es: 'Libro de repeticiones audiolingües', correct: false },
-				{ en: 'Choral repetition', es: 'Repetición coral', correct: false },
-				{ en: 'Translation dictation', es: 'Dictado de traducción', correct: false }
-			],
-			explanation: {
-				en: 'Task-based teaching presents a task or problem first; learners use language — including grammar — to achieve a real communicative goal.',
-				es: 'La enseñanza basada en tareas presenta primero una tarea o problema; los estudiantes usan el lenguaje, incluida la gramática, para lograr un objetivo comunicativo real.'
-			}
-		},
-		{
-			id: 9,
-			en: 'Why can pairwork help reduce anxiety during grammar practice?',
-			es: '¿Por qué el trabajo en parejas puede ayudar a reducir la ansiedad durante la práctica de gramática?',
-			options: [
-				{ en: 'It removes all teacher correction', es: 'Elimina toda corrección del profesor', correct: false },
-				{ en: 'It lowers the feeling of being watched by the whole class', es: 'Reduce la sensación de ser observado por toda la clase', correct: true },
-				{ en: 'It guarantees 100% accuracy', es: 'Garantiza un 100% de precisión', correct: false },
-				{ en: 'It replaces individual study', es: 'Remplaza el estudio individual', correct: false }
-			],
-			explanation: {
-				en: 'Pairwork reduces peer pressure and increases interaction, which makes students more willing to experiment with new structures.',
-				es: 'El trabajo en parejas reduce la presión social y aumenta la interacción, haciendo que los estudiantes estén más dispuestos a experimentar con nuevas estructuras.'
-			}
-		},
-		{
-			id: 10,
-			en: 'Which three dimensions are often used to analyse a grammar item?',
-			es: '¿Qué tres dimensiones se usan frecuentemente para analizar un elemento gramatical?',
-			options: [
-				{ en: 'Form, meaning and use', es: 'Forma, significado y uso', correct: true },
-				{ en: 'Spelling, sound and speed', es: 'Ortografía, sonido y velocidad', correct: false },
-				{ en: 'Input, output and homework', es: 'Entrada, salida y tarea', correct: false },
-				{ en: 'Reading, writing and testing', es: 'Lectura, escritura y evaluación', correct: false }
-			],
-			explanation: {
-				en: 'Teachers examine form (how it is made), meaning (what it means) and use/pragmatics (when and why we choose it).',
-				es: 'Los docentes examinan la forma (cómo se construye), el significado (qué expresa) y el uso/pragmática (cuándo y por qué se elige).'
-			}
-		}
-	]
-};
 
 export const vocabularyQuiz = {
 	id: 'vocabulary',
@@ -312,6 +154,164 @@ export const vocabularyQuiz = {
 			explanation: {
 				en: 'Games provide meaningful recycling of words in an enjoyable way, which supports motivation and long-term memory.',
 				es: 'Los juegos ofrecen reciclaje significativo de palabras de forma agradable, apoyando la motivación y la memoria a largo plazo.'
+			}
+		}
+	]
+};
+
+export const vocabularyQuiz2 = {
+	id: 'vocabulary2',
+	en: { title: 'Vocabulary Assessment', description: 'Test your knowledge of vocabulary assessment, differentiation and learner needs.' },
+	es: { title: 'Evaluación de Vocabulario', description: 'Evalúa tu conocimiento sobre evaluación de vocabulario, diferenciación y necesidades del estudiante.' },
+	questions: [
+		{
+			id: 1,
+			en: 'What is the "word family" concept in vocabulary teaching?',
+			es: '¿Qué es el concepto de "familia de palabras" en la enseñanza de vocabulario?',
+			options: [
+				{ en: 'Words that share the same meaning', es: 'Palabras que comparten el mismo significado', correct: false },
+				{ en: 'Words derived from the same root (e.g., happy, happiness, happily)', es: 'Palabras derivadas de la misma raíz (ej. happy, happiness, happily)', correct: true },
+				{ en: 'Words that rhyme with each other', es: 'Palabras que riman entre sí', correct: false },
+				{ en: 'Words from the same part of speech', es: 'Palabras de la misma categoría gramatical', correct: false }
+			],
+			explanation: {
+				en: 'Word families help learners recognise patterns and expand their vocabulary more efficiently by learning related forms together.',
+				es: 'Las familias de palabras ayudan a los estudiantes a reconocer patrones y expandir su vocabulario más eficientemente al aprender formas relacionadas juntas.'
+			}
+		},
+		{
+			id: 2,
+			en: 'What is "lexical chunking"?',
+			es: '¿Qué es el "agrupamiento léxico"?',
+			options: [
+				{ en: 'Breaking words into syllables', es: 'Dividir palabras en sílabas', correct: false },
+				{ en: 'Learning multi-word units as single items (e.g., "I don\'t know")', es: 'Aprender unidades de varias palabras como elementos únicos (ej. "I don\'t know")', correct: true },
+				{ en: 'Sorting words alphabetically', es: 'Ordenar palabras alfabéticamente', correct: false },
+				{ en: 'Grouping words by length', es: 'Agrupar palabras por longitud', correct: false }
+			],
+			explanation: {
+				en: 'Lexical chunking teaches phrases and collocations as wholes, improving fluency and natural language use.',
+				es: 'El agrupamiento léxico enseña frases y colocaciones como bloques, mejorando la fluidez y el uso natural del lenguaje.'
+			}
+		},
+		{
+			id: 3,
+			en: 'How can teachers differentiate vocabulary instruction for mixed-ability classes?',
+			es: '¿Cómo pueden los profesores diferenciar la enseñanza de vocabulario en clases de niveles mixtos?',
+			options: [
+				{ en: 'Teach the same words to all students', es: 'Enseñar las mismas palabras a todos los estudiantes', correct: false },
+				{ en: 'Provide tiered word lists and different practice activities', es: 'Proporcionar listas de palabras por niveles y diferentes actividades de práctica', correct: true },
+				{ en: 'Only teach easy words to beginners', es: 'Enseñar solo palabras fáciles a principiantes', correct: false },
+				{ en: 'Skip vocabulary instruction for advanced students', es: 'Omitir la enseñanza de vocabulario para estudiantes avanzados', correct: false }
+			],
+			explanation: {
+				en: 'Differentiation ensures all learners work at their appropriate level while covering the same topic.',
+				es: 'La diferenciación asegura que todos los estudiantes trabajen en su nivel adecuado mientras cubren el mismo tema.'
+			}
+		},
+		{
+			id: 4,
+			en: 'What is "semantic mapping" useful for?',
+			es: '¿Para qué es útil el "mapa semántico"?',
+			options: [
+				{ en: 'Only for spelling practice', es: 'Solo para práctica de ortografía', correct: false },
+				{ en: 'Visually organising related words to show relationships', es: 'Organizar visualmente palabras relacionadas para mostrar relaciones', correct: true },
+				{ en: 'Memorising word lists', es: 'Memorizar listas de palabras', correct: false },
+				{ en: 'Testing pronunciation only', es: 'Probar solo pronunciación', correct: false }
+			],
+			explanation: {
+				en: 'Semantic maps help learners see connections between words, aiding memory and recall through visual networks.',
+				es: 'Los mapas semánticos ayudan a los estudiantes a ver conexiones entre palabras, facilitando la memoria y el recuerdo mediante redes visuales.'
+			}
+		},
+		{
+			id: 5,
+			en: 'What is "vocabulary load" in a text?',
+			es: '¿Qué es la "carga de vocabulario" en un texto?',
+			options: [
+				{ en: 'The number of pages in a text', es: 'El número de páginas en un texto', correct: false },
+				{ en: 'The percentage of unknown words that makes a text difficult', es: 'El porcentaje de palabras desconocidas que hace difícil un texto', correct: true },
+				{ en: 'The size of the font used', es: 'El tamaño de la fuente utilizada', correct: false },
+				{ en: 'The reading speed required', es: 'La velocidad de lectura requerida', correct: false }
+			],
+			explanation: {
+				en: 'Vocabulary load affects readability; texts with more than 5% unknown words may be too challenging without support.',
+				es: 'La carga de vocabulario afecta la legibilidad; los textos con más del 5% de palabras desconocidas pueden ser demasiado desafiantes sin apoyo.'
+			}
+		},
+		{
+			id: 6,
+			en: 'Why teach "connotation" along with denotation?',
+			es: '¿Por qué enseñar "connotación" junto con denotación?',
+			options: [
+				{ en: 'It is not necessary for language learning', es: 'No es necesario para aprender idiomas', correct: false },
+				{ en: 'Words have emotional and cultural meanings beyond literal definition', es: 'Las palabras tienen significados emocionales y culturales más allá de la definición literal', correct: true },
+				{ en: 'Only advanced learners need it', es: 'Solo los estudiantes avanzados lo necesitan', correct: false },
+				{ en: 'It is too difficult for beginners', es: 'Es demasiado difícil para principiantes', correct: false }
+			],
+			explanation: {
+				en: 'Connotation helps learners use words appropriately in context and understand tone and register.',
+				es: 'La connotación ayuda a los estudiantes a usar palabras apropiadamente en contexto y comprender el tono y el registro.'
+			}
+		},
+		{
+			id: 7,
+			en: 'What is "vocabulary notebook" technique?',
+			es: '¿Qué es la técnica del "cuaderno de vocabulario"?',
+			options: [
+				{ en: 'Writing words randomly on any page', es: 'Escribir palabras al azar en cualquier página', correct: false },
+				{ en: 'Recording words with definitions, examples and personal connections', es: 'Registrar palabras con definiciones, ejemplos y conexiones personales', correct: true },
+				{ en: 'Only copying from the dictionary', es: 'Solo copiar del diccionario', correct: false },
+				{ en: 'Never reviewing the words', es: 'Nunca repasar las palabras', correct: false }
+			],
+			explanation: {
+				en: 'Vocabulary notebooks encourage active engagement with words through personal examples and regular review.',
+				es: 'Los cuadernos de vocabulario fomentan la participación activa con las palabras mediante ejemplos personales y repaso regular.'
+			}
+		},
+		{
+			id: 8,
+			en: 'How can digital tools support vocabulary learning?',
+			es: '¿Cómo pueden las herramientas digitales apoyar el aprendizaje de vocabulario?',
+			options: [
+				{ en: 'They have no benefit', es: 'No tienen beneficio', correct: false },
+				{ en: 'Through spaced repetition apps, online dictionaries and flashcards', es: 'Mediante aplicaciones de repetición espaciada, diccionarios en línea y tarjetas de memoria', correct: true },
+				{ en: 'Only for entertainment', es: 'Solo para entretenimiento', correct: false },
+				{ en: 'They replace teachers completely', es: 'Reemplazan a los profesores completamente', correct: false }
+			],
+			explanation: {
+				en: 'Digital tools provide personalised practice and immediate feedback, enhancing traditional classroom instruction.',
+				es: 'Las herramientas digitales proporcionan práctica personalizada y retroalimentación inmediata, mejorando la enseñanza tradicional en el aula.'
+			}
+		},
+		{
+			id: 9,
+			en: 'What is "vocabulary gap analysis"?',
+			es: '¿Qué es el "análisis de brecha de vocabulario"?',
+			options: [
+				{ en: 'Finding missing pages in a book', es: 'Encontrar páginas faltantes en un libro', correct: false },
+				{ en: 'Comparing known words to target vocabulary to identify learning needs', es: 'Comparar palabras conocidas con vocabulario objetivo para identificar necesidades de aprendizaje', correct: true },
+				{ en: 'Testing only spelling', es: 'Probar solo ortografía', correct: false },
+				{ en: 'Counting total words in a text', es: 'Contar el total de palabras en un texto', correct: false }
+			],
+			explanation: {
+				en: 'Gap analysis helps teachers select appropriate vocabulary to teach based on what learners already know.',
+				es: 'El análisis de brecha ayuda a los profesores a seleccionar vocabulario apropiado para enseñar basándose en lo que los estudiantes ya conocen.'
+			}
+		},
+		{
+			id: 10,
+			en: 'Why teach "polysemy" to vocabulary learners?',
+			es: '¿Por qué enseñar "polisemia" a los estudiantes de vocabulario?',
+			options: [
+				{ en: 'It is too confusing', es: 'Es demasiado confuso', correct: false },
+				{ en: 'Many words have multiple meanings depending on context', es: 'Muchas palabras tienen múltiples significados dependiendo del contexto', correct: true },
+				{ en: 'Only linguists need to know it', es: 'Solo los lingüistas necesitan saberlo', correct: false },
+				{ en: 'It is not relevant to communication', es: 'No es relevante para la comunicación', correct: false }
+			],
+			explanation: {
+				en: 'Understanding polysemy helps learners interpret meaning correctly in different contexts and avoid misunderstandings.',
+				es: 'Comprender la polisemia ayuda a los estudiantes a interpretar el significado correctamente en diferentes contextos y evitar malentendidos.'
 			}
 		}
 	]

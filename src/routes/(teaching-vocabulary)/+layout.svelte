@@ -18,8 +18,8 @@
 		<a href="/teaching-vocabulary" class="brand">{t.moduleName}</a>
 		<div class="nav-links">
 			<a href="/teaching-vocabulary" class:active={$page.url.pathname === '/teaching-vocabulary'}>{t.home}</a>
-			<a href="/teaching-vocabulary/grammar" class:active={$page.url.pathname === '/teaching-vocabulary/grammar'}>{t.grammarQuiz}</a>
 			<a href="/teaching-vocabulary/vocabulary" class:active={$page.url.pathname === '/teaching-vocabulary/vocabulary'}>{t.vocabularyQuiz}</a>
+			<a href="/teaching-vocabulary/vocabulary2" class:active={$page.url.pathname === '/teaching-vocabulary/vocabulary2'}>{t.vocabularyQuiz2}</a>
 			<a href="/teaching-vocabulary/ranking" class:active={$page.url.pathname === '/teaching-vocabulary/ranking'}>{t.ranking}</a>
 			<div class="lang-switch">
 				<button class="secondary" on:click={() => setLanguage('en')}>EN</button>

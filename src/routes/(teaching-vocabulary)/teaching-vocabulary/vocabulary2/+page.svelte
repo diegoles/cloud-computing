@@ -1,6 +1,6 @@
 <script>
 	import QuizPlayer from '$lib/teaching-vocabulary/QuizPlayer.svelte';
-	import { grammarQuiz } from '$lib/teaching-vocabulary/quizData.js';
+	import { vocabularyQuiz2 } from '$lib/teaching-vocabulary/quizData.js';
 	import { teachingStore } from '$lib/teaching-vocabulary/store.js';
 	import { translations, defaultLang } from '$lib/teaching-vocabulary/translations.js';
 
@@ -19,18 +19,18 @@
 </script>
 
 <svelte:head>
-	<title>{t.grammarQuiz} | {t.moduleName}</title>
+	<title>{t.vocabularyQuiz2} | {t.moduleName}</title>
 </svelte:head>
 
 {#if !started && !finished}
 	<div class="card" style="max-width: 640px; margin: 2rem auto; text-align: center;">
-		<h1>{t.grammarQuiz}</h1>
+		<h1>{t.vocabularyQuiz2}</h1>
 		<p style="color: var(--muted); margin: 1rem 0;">{t.quizIntro}</p>
 		<button style="margin-top: 1rem;" on:click={() => (started = true)}>{t.startQuiz}</button>
 		<a href="/teaching-vocabulary" class="btn secondary" style="margin-top: 1rem; margin-left: 0.5rem;">{t.backToDashboard}</a>
 	</div>
 {:else}
-	<QuizPlayer quiz={grammarQuiz} {user} {lang} on:finish={() => { started = false; finished = true; }} />
+	<QuizPlayer quiz={vocabularyQuiz2} {user} {lang} on:finish={() => { started = false; finished = true; }} />
 {/if}
 
 {#if finished && !started}
